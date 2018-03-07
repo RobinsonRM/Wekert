@@ -6,6 +6,7 @@ $komplikacja = 1;
 $standard = [220, 400, 580, 760, 910];
 $komplikacja = [150,300,450,600,750];*/
 
+Teraz zmiany.
  
 $komplikacja = 1;
 $iloscM2 = 300;
