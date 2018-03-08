@@ -5,20 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" href="mainRM.css">
     <script src="main.js"></script>
 </head>
 <body>
+    <form action="" method="">
     <div class="WprowadzanieDanych">
         <div class="NazwaInwestycji">
             <p>Nazwa inwestycji</p>
-            <input type="text" name="NazwaInwestycji">
+            <input type="text" name="WprInwestycji" size="50">
         </div>
         <div class="PowierzchniaGrubosc">
             <p>Pomiar powierzchni</p>
-            <input type="text" name = "Powierzchnia">
+            <input type="text" name = "Powierzchnia"> m2<br>
             <p>Grubość izolacji</p>
-            <input type="text" name ="Grubosc">
+            <input type="text" name ="Grubosc"> cm<br>
             <input type="checkbox" name="komplikacja" value="Skomplikowany">Utrudnienie<br>
         </div>
         <div class="MaterialZakupKurs">
@@ -29,13 +30,13 @@
                 <option>AlmaColor</option>
             </select>
             <p>Koszt zakupu</p>
-            <input type="text" name = "KosztZakupu">
+            <input type="text" name = "KosztZakupu"> euro/kg<br>
             <p>Kurs euro</p>
-            <input type="text" name = "KursEuro">
+            <input type="text" name = "KursEuro"> zł/euro<br>
         </div>
-
+        <input type="submit" name ="wyslij" value="Wyślij">
     </div>
-
+    </form>
 
 </body>
 </html>

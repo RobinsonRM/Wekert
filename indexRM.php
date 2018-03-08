@@ -1,7 +1,7 @@
 <?php
 
-$komplikacja = 0;
-$iloscM2 = 555;
+$komplikacja = 1;
+$iloscM2 = 451;
 
 if ($komplikacja == 1) {
     echo komplikacja ($iloscM2);
@@ -24,10 +24,10 @@ function standard ($powierzchnia) {
         echo $iloscDni = 3 . ' dni - obiekt standardowy';
     }
     elseif ($powierzchnia >= $standard[2] && $powierzchnia <= $standard[3]){
-        echo $iloscDni = 4 . 'dni - obiekt standardowy';
+        echo $iloscDni = 4 . ' dni - obiekt standardowy';
     }
     elseif ($powierzchnia >= $standard[3] && $powierzchnia <= $standard[4]) {
-        echo $iloscDni = 5 . 'dni - obiekt standardowy';
+        echo $iloscDni = 5 . ' dni - obiekt standardowy';
     }
     else {
         echo "Realizacja inwestycji powyżej 1 tygodnia";
@@ -50,7 +50,8 @@ function komplikacja ($powierzchnia) {
         echo $iloscDni = 4 . ' dni - obiekt skomplikowany';
     }
     elseif ($powierzchnia >= $komplikacja[3] && $powierzchnia <= $komplikacja[4]) {
-        echo $iloscDni = 5 . 'dni - obiekt skomplikowany';
+        echo $iloscDni = 5 . ' 
+        1`dni - obiekt skomplikowany';
     }
     else {
         echo "Realizacja inwestycji powyżej 1 tygodnia";
