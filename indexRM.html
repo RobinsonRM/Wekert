@@ -10,8 +10,30 @@
 </head>
 <body>
     <div class="WprowadzanieDanych">
-        <p>Nazwa inwestycji</p>
-        <input type="NazwaInwestycji">
+        <div class="NazwaInwestycji">
+            <p>Nazwa inwestycji</p>
+            <input type="text" name="NazwaInwestycji">
+        </div>
+        <div class="PowierzchniaGrubosc">
+            <p>Pomiar powierzchni</p>
+            <input type="text" name = "Powierzchnia">
+            <p>Grubość izolacji</p>
+            <input type="text" name ="Grubosc">
+            <input type="checkbox" name="komplikacja" value="Skomplikowany">Utrudnienie<br>
+        </div>
+        <div class="MaterialZakupKurs">
+            <P>Materiał</P>
+            <select name="material" size="1">
+                <option>Crossin</option>
+                <option>Ekoprodur S0310</option>
+                <option>AlmaColor</option>
+            </select>
+            <p>Koszt zakupu</p>
+            <input type="text" name = "KosztZakupu">
+            <p>Kurs euro</p>
+            <input type="text" name = "KursEuro">
+        </div>
+
     </div>
 
 
