@@ -1,0 +1,11 @@
+.NazwaInwestycji {
+    background: rgb(106, 99, 204);
+     height: 80px;
+     width: 600px;
+     text-align: center;
+     justify-content: center;
+     align-items: center;
+     color: hsla(0,0%,100%,.9);
+     padding-top: 1px; 
+     
+}
