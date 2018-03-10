@@ -3,40 +3,68 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Wekert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="mainRM.css">
     <script src="main.js"></script>
 </head>
 <body>
-    <form action="" method="">
-    <div class="WprowadzanieDanych">
-        <div class="NazwaInwestycji">
-            <p>Nazwa inwestycji</p>
-            <input type="text" name="WprInwestycji" size="50">
-        </div>
-        <div class="PowierzchniaGrubosc">
-            <p>Pomiar powierzchni</p>
-            <input type="text" name = "Powierzchnia"> m2<br>
-            <p>Grubość izolacji</p>
-            <input type="text" name ="Grubosc"> cm<br>
-            <input type="checkbox" name="komplikacja" value="Skomplikowany">Utrudnienie<br>
-        </div>
-        <div class="MaterialZakupKurs">
-            <P>Materiał</P>
-            <select name="material" size="1">
-                <option>Crossin</option>
-                <option>Ekoprodur S0310</option>
-                <option>AlmaColor</option>
-            </select>
-            <p>Koszt zakupu</p>
-            <input type="text" name = "KosztZakupu"> euro/kg<br>
-            <p>Kurs euro</p>
-            <input type="text" name = "KursEuro"> zł/euro<br>
-        </div>
-        <input type="submit" name ="wyslij" value="Wyślij">
-    </div>
-    </form>
+   
+    <header>
+    
+        <section>
+            <div class="NazwaInwestycji">
+                <form action="indexRM.html">
+                    <label for="WprInwestycji">Nazwa inwestycji</label><br>
+                    <input type="text" name="WprInwestycji" size="50">
+                    <input type="checkbox" name="komplikacja" value="Skomplikowany">
+                    <label for="komplikacja">Utrudnienie</label>
+                </form>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <div class="PowierzchniaGrubosc">
+                <form action="indexRM.html">
+                    <label for="Powierzchnia">Pomiar powierzchni</label><br>
+                    <input type="text" name = "Powierzchnia"><label>m2</label><br>
+                    <label for="Grubosc">Grubość izolacji</label><br>
+                    <input type="text" name ="Grubosc"><label for="Grubosc"> cm</label><br>
+                    <button>Dodaj</button>
+                </form>
+            </div>
+        </section>
+
+        <section>
+            <div class="MaterialZakupKurs">
+                <form action="indexRM.html">
+                    <label for="material">Materiał</label><br>
+                    <select name="material" id="a1">
+                        <option>Crossin</option>
+                        <option>Ekoprodur S0310</option>
+                        <option>AlmaColor</option>
+                    </select><br>
+                    <label for="KosztZakupu">Koszt zakupu</label><br>
+                    <input type="text" name = "KosztZakupu"> 
+                        <select name="waluta" id="a2">
+                            <option>euro/kg</loption>
+                            <option>zł/kg</option>
+                        </select><br>
+                    <label for="KursRuro">Kurs euro</label><br>
+                    <input type="text" name = "KursEuro"> <label> zł/euro</label> 
+                </form>
+            </div>
+        </section>
+
+        <input class="przycisk" type="submit" name ="wyslij" value="Wyślij">
+    
+    </header>
+   
+    <footer>
+        <p>&copy; Opracowano - WEKERT</p>
+    </footer>
 
 </body>
 </html>

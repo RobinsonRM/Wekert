@@ -1,11 +1,28 @@
 .NazwaInwestycji {
+  padding: 20px;
+}
+
+.PowierzchniaGrubosc {
+  padding: 20px;
+}
+
+.MaterialZakupKurs {
+  padding: 20px;
+}
+
+.przycisk {
+  margin: 20px;
+}
+
+
+/*.heder {
     background: rgb(106, 99, 204);
-     height: 80px;
-     width: 600px;
+    height: 80px;
+    width: 700px;
      text-align: center;
      justify-content: center;
      align-items: center;
      color: hsla(0,0%,100%,.9);
-     padding-top: 1px; 
+     padding: 40px; 
      
-}
+}*/
