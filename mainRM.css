@@ -61,7 +61,8 @@ header {
   border: 1px solid rgb(223, 223, 238);
   border-radius: 20px;
   padding: 5px 0px 20px 0px;
-  background: rgba(48, 52, 104, 0.5)
+  background: rgba(48, 52, 104, 0.5);
+  line-height: 1.4;
 }
 
 .blok1 {
