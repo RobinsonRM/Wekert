@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION['zalogowany'])) {
+    header('Location:index.php');
+    exit();
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +36,11 @@
         <hr>
     <dane>
         <!-- Główne parametry inwestycji -->
+        <?php
+            echo '<span style="color: white;">'. "Witaj ".$_SESSION['uzytkownik']."!".'</span>';
+            echo ' | <a style="color:yellow" href="logout.php">Wyloguj się!</a>'
+          
+        ?>
         <section class="blok1">
             <div class="PowierzchniaGrubosc">
                 <form action="" method="post">
@@ -32,18 +49,17 @@
                     <label for="Grubosc">Grubość izolacji</label><br>
                     <input type="text" name ="Grubosc"><label for="Grubosc"> cm</label><br>
                     
-                    <?php
+                    <?php              
+                      print '<button type="submit" name="submit" value="Dodaj">Dodaj</button>';
                       if(isset($_POST['submit'])){ ?>
                         <hr>
-                        <label>Pomiar drugiej powierzchni</label>
+                        <label>Pomiar dodatkowej powierzchni</label>
                         <input type="int" name='Powierzchnia2'><label> m2</label><br>
-                        <label>Grubość drugiej izolacji</label>
+                        <label>Grubość dodatkowej izolacji</label>
                         <input type="int" name='Grubość2'><label> cm</label><br>
                         <button type="submit" name="submit2" value="Usuń">Usuń</button>
                     <?php } ?>
 
-
-                    <button type="submit" name="submit" value="Dodaj">Dodaj</button>
                 </form>
             </div>
         </section>
@@ -77,6 +93,11 @@
     <footer>
         <p>&copy; Opracowano - WEKERT</p>
     </footer>
+
+
+
+
+
 
 </body>
 </html>
