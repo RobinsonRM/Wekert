@@ -3,77 +3,72 @@
 <?php
 session_start();
 
-echo ($_SESSION['wprowadz_dane']); //sprawdzenie czy zmienna jest przekazana //
-
-
-/*require_once "connect.php";
-
-$polaczenie =new mysqli($host,$db_user,$db_password,$db_name);
-
-if($polaczenie->connect_errno!=0){
-    echo "Error: ".$polaczenie->connect_errno;
-} else {
-    echo ($_SESSION['inwestycja']);
-    $komplikacja = $_POST['komplikacja'];
-    $Powierzchnia1 = $_POST['Powierzchnia1'];
-    $Grubosc = $_POST['Grubosc'];
-    $Powierzchnia2 = $_POST['Powierzchnia2'];
-    $Grubosc2 = $_POST['Grubosc2'];
-} 
-*/
-   
-
-/*if((!isset($_POST['login'])) || (!isset($_POST['haslo']))) {
-    header('Location:index.php');
-    extit();
-}
-
+//Połączenie z bazą//
 require_once "connect.php";
-
 $polaczenie =new mysqli($host,$db_user,$db_password,$db_name);
-
-if($polaczenie->connect_errno!=0){
-    echo "Error: ".$polaczenie->connect_errno;
-} else {
-    $login = $_POST['login'];
-    $haslo = $_POST['haslo'];
-
-    $login = htmlentities($login, ENT_QUOTES, "UTF-8");
-    $haslo = htmlentities($haslo, ENT_QUOTES, "UTF-8");
-    
-   // $sql = "SELECT * FROM uzytkownicy WHERE login='$login' AND password='$haslo'"; //
-
-    if($rezultat = @$polaczenie->query(
-    sprintf("SELECT * FROM uzytkownicy WHERE login='%s' AND password='%s'",
-    mysqli_real_escape_string($polaczenie,$login),
-    mysqli_real_escape_string($polaczenie,$haslo))))
-    {
-        $ilu_loginow = $rezultat->num_rows;
-        if($ilu_loginow>0) {
-
-            $_SESSION['zalogowany']=true;
-
-            $wiersz = $rezultat->fetch_assoc();
-            $_SESSION['id'] = $wiersz['id'];
-            $_SESSION['uzytkownik'] = $wiersz['login'];
-
-            unset($_SESSION['blad']);
-
-            $rezultat->free_result(); 
-            header('Location:Inwestycje.php');
-            
-        } else{
-
-            $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-            header('Location: index.php');
-           
-        }
-    }
-
-    $polaczenie->close();
-}
-
-*/
-
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Szczegóły Inwestycji</title>
+</head>
+<body>
+
+<!-- Tabela ze szczegółami inwstycji -->
+<div class=szczegolyInwestycji>
+    <h1>Szczegóły Inwestycji</h1>       
+</div>               
+ 
+<?php
+
+// Wyświetlenie Szczegółów Inwestycji //
+   if ($result = $polaczenie->query("SELECT * FROM wyliczanka ORDER BY id")) {
+           
+        if($result->num_rows >0) {
+       
+            echo "<table border ='1' cellpadding = '4'>";
+        
+            echo "<tr>
+                    <th>Nazwa inwestycji</th>
+                    <th>Powierzchnia 1</th>
+                    <th>Grubość 1</th>
+                    <th>Powierzchnia 2</th>
+                    <th>Grubość 2</th>
+                    <th>Rodzaj materiału</th>
+                    <th>Koszt zakupu</th>
+                    <th>Kurs euro</th>
+                </tr>";
+
+       while($row =$result->fetch_object()){
+            echo "<tr>";
+            echo "<td>" . $row->nazwa_inwestycji . "</td>";
+            echo "<td>" . $row->powierzchnia1 . "</td>";
+            echo "<td>" . $row->grubosc1 . "</td>";
+            echo "<td>" . $row->powierzchnia2 . "</td>";
+            echo "<td>" . $row->grubosc2 . "</td>";
+            echo "<td>" . $row->material . "</td>";
+            echo "<td>" . $row->koszt_zakupu . "</td>";
+            echo "<td>" . $row->kurs_euro . "</td>";        
+            echo "</tr>";
+        }
+        
+        echo "</table>";
+
+        } else {
+            echo "Brak rekordów";
+        }
+
+    } else {
+        echo "Błąd: " . $polaczenie->error; 
+    }
+
+$polaczenie ->close();
+
+?>
+</body>
+</html>
