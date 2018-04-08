@@ -3,7 +3,27 @@
 <?php
 session_start();
 
-if((!isset($_POST['login'])) || (!isset($_POST['haslo']))) {
+echo ($_SESSION['wprowadz_dane']); //sprawdzenie czy zmienna jest przekazana //
+
+
+/*require_once "connect.php";
+
+$polaczenie =new mysqli($host,$db_user,$db_password,$db_name);
+
+if($polaczenie->connect_errno!=0){
+    echo "Error: ".$polaczenie->connect_errno;
+} else {
+    echo ($_SESSION['inwestycja']);
+    $komplikacja = $_POST['komplikacja'];
+    $Powierzchnia1 = $_POST['Powierzchnia1'];
+    $Grubosc = $_POST['Grubosc'];
+    $Powierzchnia2 = $_POST['Powierzchnia2'];
+    $Grubosc2 = $_POST['Grubosc2'];
+} 
+*/
+   
+
+/*if((!isset($_POST['login'])) || (!isset($_POST['haslo']))) {
     header('Location:index.php');
     extit();
 }
@@ -53,7 +73,7 @@ if($polaczenie->connect_errno!=0){
     $polaczenie->close();
 }
 
-
+*/
 
 
 ?>

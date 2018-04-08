@@ -17,20 +17,22 @@ if(!isset($_SESSION['zalogowany'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Wekert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="mainRM.css">
+    <link rel="stylesheet" type="text/css" href="inwestycje.css">
 </head>
 <body>
     <header>
         <!-- Inwestycja -->
         <section clas="top">
             <div class="NazwaInwestycji">
-                <form action="indexRM.html">
+                <form action="" method="post">
                     <label class="opis"for="WprInwestycji">Nazwa inwestycji</label><br>
                     <input type="text" name="WprInwestycji">
                     <input type="checkbox" name="komplikacja" value="Skomplikowany">
                     <label for="komplikacja">Utrudnienie</label>
+                   
                 </form>
             </div>
+                  
         </section>
     </header>
         <hr>
@@ -50,14 +52,14 @@ if(!isset($_SESSION['zalogowany'])) {
                     <input type="text" name ="Grubosc"><label for="Grubosc"> cm</label><br>
                     
                     <?php              
-                      print '<button type="submit" name="submit" value="Dodaj">Dodaj</button>';
-                      if(isset($_POST['submit'])){ ?>
+                      print '<button type="submit" name="submit2" value="Dodaj">Dodaj</button>';
+                      if(isset($_POST['submit2'])){ ?>
                         <hr>
                         <label>Pomiar dodatkowej powierzchni</label>
-                        <input type="int" name='Powierzchnia2'><label> m2</label><br>
+                        <input type="int" name='Powierzchnia2' value=0><label> m2</label><br>
                         <label>Grubość dodatkowej izolacji</label>
-                        <input type="int" name='Grubość2'><label> cm</label><br>
-                        <button type="submit" name="submit2" value="Usuń">Usuń</button>
+                        <input type="int" name='Grubość2' value=0><label> cm</label><br>
+                        <button type="submit" name="submit1" value="Usuń">Usuń</button>
                     <?php } ?>
 
                 </form>
@@ -81,18 +83,27 @@ if(!isset($_SESSION['zalogowany'])) {
                         </select><br>
                     <label for="KursRuro">Kurs euro</label><br>
                     <input type="text" name = "KursEuro"> <label> zł/euro</label> 
-                </form>
-            </div>
-        </section>
-        
-    <div class="PrzyciskWyslij"> 
-        <input class="przycisk" type="submit" name ="wyslij" value="Wyślij">
-    </div> 
-    </dane>
+                </form>                   
+                    </section>
+                    
+                    <form action="" method="post">    
+                        <div class="PrzyciskWyslij"> 
+                        <input class="przycisk" type="submit" name ="submit" value="Wyślij">
+                            <?php
+                                 if(isset($_POST['submit'])){
+                                 echo ("Jest ok");                                  
+                                 $_SESSION['wprowadz_dane']=1;
+                                 header('Location: add_db_inwestycje.php');
+                                 }
+                            ?>
+                        </div> 
+                    </form>
+                </dane>
    
     <footer>
-        <p>&copy; Opracowano - WEKERT</p>
+        <p>&copy; WEKERT</p>
     </footer>
+
 
 
 
