@@ -21,10 +21,14 @@ $polaczenie =new mysqli($host,$db_user,$db_password,$db_name);
 
 <!-- Tabela ze szczegółami inwstycji -->
 <div class=szczegolyInwestycji>
-    <h1>Szczegóły Inwestycji</h1>       
+    <h1>Szczegóły Inwestycji</h1> 
+    <a href="Inwestycje.php" style="color:#1FE300; font-size: 20px; margin:20px; padding:10px">Powrót</a>      <!-- brak zabezpieczenia wejścia bezpośrednio z wiersza poleceń -->
 </div>               
  
 <?php
+
+
+
 
 // Wyświetlenie Szczegółów Inwestycji //
    if ($result = $polaczenie->query("SELECT * FROM wyliczanka ORDER BY id")) {
@@ -41,8 +45,10 @@ $polaczenie =new mysqli($host,$db_user,$db_password,$db_name);
                     <th>Grubość 2</th>
                     <th>Rodzaj materiału</th>
                     <th>Koszt zakupu</th>
+                    <th>Waluta</th>
                     <th>Kurs euro</th>
                 </tr>";
+
 
        while($row =$result->fetch_object()){
             echo "<tr>";
@@ -53,6 +59,7 @@ $polaczenie =new mysqli($host,$db_user,$db_password,$db_name);
             echo "<td>" . $row->grubosc2 . "</td>";
             echo "<td>" . $row->material . "</td>";
             echo "<td>" . $row->koszt_zakupu . "</td>";
+            echo "<td>" . $row->waluta . "</td>";
             echo "<td>" . $row->kurs_euro . "</td>";        
             echo "</tr>";
         }
@@ -70,5 +77,6 @@ $polaczenie =new mysqli($host,$db_user,$db_password,$db_name);
 $polaczenie ->close();
 
 ?>
+<a href="Inwestycje.php" style="color:#1FE300; font-size: 20px; margin:20px; padding:10px">Powrót</a>      <!-- brak zabezpieczenia wejścia bezpośrednio z wiersza poleceń -->
 </body>
 </html>

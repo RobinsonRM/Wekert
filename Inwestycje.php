@@ -28,13 +28,14 @@ if(!isset($_SESSION['zalogowany'])) {
         <section clas="top">
             <div class="NazwaInwestycji">
                     <label class="opis"for="WprInwestycji">Nazwa inwestycji</label><br>
-                    <input type="text" name="WprInwestycji" ">
+                    <input type="text" name="WprInwestycji">
                     <input type="checkbox" name="komplikacja" value="Skomplikowany">
                     <label for="komplikacja">Utrudnienie</label>                    
             </div>
                   
         </section>
     </header>
+    <a href="add_db_inwestycje.php" style="color:#1FE300; margin:20px">Szczegóły inwestycji wykonanych</a>   <!-- brak zabezpieczenia wejścia bezpośrednio z wiersza poleceń -->
         <hr>
     <dane>
         <!-- Główne parametry inwestycji -->
@@ -46,13 +47,16 @@ if(!isset($_SESSION['zalogowany'])) {
         <section class="blok1">
             <div class="PowierzchniaGrubosc">
                     <label for="Powierzchnia" class="etykieta1">Pomiar powierzchni</label><br>
-                    <input type="text" name = "Powierzchnia1"><label> m2</label><br>
+                    <input type="text" name = "Powierzchnia1" ><label> m2</label><br>
                     <label for="Grubosc">Grubość izolacji</label><br>
                     <input type="text" name ="Grubosc1"><label for="Grubosc1"> cm</label><br>
-                    
-                    <?php              
+               
+
+                    <?php   
+                                   
                       print '<button type="submit" name="submit2" value="Dodaj">Dodaj</button>';
                       if(isset($_POST['submit2'])){ ?>
+                    
                         <hr>
                         <label>Pomiar dodatkowej powierzchni</label>
                         <input type="int" name='Powierzchnia2' value=0><label> m2</label><br>
@@ -76,7 +80,7 @@ if(!isset($_SESSION['zalogowany'])) {
                     </select><br>
                     <label for="KosztZakupu">Koszt zakupu</label><br>
                     <input type="text" name = "KosztZakupu"> 
-                        <select name="waluta" id="a2">
+                        <select name="waluta">
                             <option>euro/kg</loption>
                             <option>zł/kg</option>
                         </select><br>
@@ -91,9 +95,10 @@ if(!isset($_SESSION['zalogowany'])) {
                    
     </dane>
     
-    <!-- Wprowadzenie doanych do bazy - Określenie zmiennych -->
+    <!-- Wprowadzenie danych do bazy - Określenie zmiennych -->
     <?php
-    if(isset($_POST['submit'])){
+
+    if(isset($_POST['submit'])) {
         
         $inwestycja = $_POST['WprInwestycji'];
         $powierzchnia1 = $_POST['Powierzchnia1'];
@@ -102,37 +107,52 @@ if(!isset($_SESSION['zalogowany'])) {
         $kosztZakupu = $_POST['KosztZakupu'];
         $waluta = $_POST['waluta'];
         $kursEuro =$_POST['KursEuro'];
-        
-        if(isset($_POST['submit1'])){
-            $powierzchnia2 = $_POST['Powierzchnia2'];
-            $grubosc2 = $_POST['Grubosc2'];
-        }
+        $powierzchnia2 = $_POST['Powierzchnia2'];
+        $grubosc2 = $_POST['Grubosc2'];
+    } else {
+        $inwestycja = 0;
+        $powierzchnia1 = 0;
+        $grubosc1 = 0;
+        $material = 0;
+        $kosztZakupu = 0;
+        $waluta = 0;
+        $kursEuro = 0; 
+        $powierzchnia2 = 0;
+        $grubosc2 = 0;
+    }   
+ 
         // Wprowadzenie danych formularza do bazy danych //   
-        if($inwestycja=='' || $powierzchnia1=='' || $grubosc1=='' || $material=='' || $kosztZakupu=='' || $waluta=='' || $kursEuro=='') {
+
+    if (isset($_POST['submit'])) {
+          
+        if ($inwestycja=='' || $powierzchnia1=='' || $grubosc1=='' || $material=='' || $kosztZakupu=='' || $waluta=='' || $kursEuro=='') {
             echo '<span style="color:yellow">'."Wprowadź wszystkie dane!".'</span><br/>';
+
             } else {
-                if($wprowadzanie = $polaczenie->prepare("INSERT wyliczanka (nazwa_inwestycji, powierzchnia1, grubosc1, powierzchnia2, grubosc2, material, koszt_zakupu, kurs_euro) VALUES ('$inwestycja','$powierzchnia1','$grubosc1','$powierzchnia2','$grubosc2','$material','$kosztZakupu','$kursEuro')") ) {
+
+                if($wprowadzanie = $polaczenie->prepare("INSERT wyliczanka (nazwa_inwestycji, powierzchnia1, grubosc1, powierzchnia2, grubosc2, material, koszt_zakupu, waluta, kurs_euro) VALUES ('$inwestycja','$powierzchnia1','$grubosc1','$powierzchnia2','$grubosc2','$material','$kosztZakupu','$waluta','$kursEuro')") ) {
                     $wprowadzanie->execute();
                     $wprowadzanie->close();
                     header('Location: add_db_inwestycje.php'); 
-                }else {
+                } else {
                     echo "Błąd zapytania";
                 }
             }
-            
-            $_SESSION['inwestycja'] = $inwestycja;
-            $_SESSION['powierzchnia1'] = $powierzchnia1;
-            $_SESSION['grubosc1'] = $grubosc1;
-            $_SESSION['material'] = $material;
-            $_SESSION['KosztZakupu'] = $kosztZakupu;
-            $_SESSION['waluta'] = $waluta;
-            $_SESSION['KursEuro'] = $kursEuro;
-            
-            if(isset($powierzchnia2, $grubosc2)) {
-                $_SESSION['powierzchnia2'] = $powierzchnia2;
-                $_SESSION['grubosc2'] = $grubosc2;
-            }
         }
+            
+    $_SESSION['inwestycja'] = $inwestycja;
+    $_SESSION['powierzchnia1'] = $powierzchnia1;
+    $_SESSION['grubosc1'] = $grubosc1;
+    $_SESSION['material'] = $material;
+    $_SESSION['KosztZakupu'] = $kosztZakupu;
+    $_SESSION['waluta'] = $waluta;
+    $_SESSION['KursEuro'] = $kursEuro;
+           
+    if(isset($powierzchnia2, $grubosc2)) {
+        $_SESSION['powierzchnia2'] = $powierzchnia2;
+        $_SESSION['grubosc2'] = $grubosc2;
+    }
+        
     
     ?>
 <footer>

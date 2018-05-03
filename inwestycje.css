@@ -68,7 +68,7 @@ header {
   border: 1px solid rgb(223, 223, 238);
   border-radius: 20px;
   padding: 5px 0px 20px 0px;
-  background: rgba(28, 38, 167, 0.8);
+  background: rgba(211, 130, 25, 0.8);
   line-height: 1.4;
   color: azure;
 }
@@ -107,4 +107,7 @@ body {
   background-size: cover;
  }
 
+radio1 {
+  display: inline-block;
+ }
  
